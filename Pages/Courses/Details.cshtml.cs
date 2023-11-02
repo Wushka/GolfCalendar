@@ -41,10 +41,10 @@ namespace WebApplication1.Pages.Courses
             else
             {
                 Course = course;
+                TimeSlots = TimeSlotsForDate(course.Id, start_time);
+                
                 DateTime start = new DateTime(2023, 10, 1, 1, 0, 0);
                 DateTime end = new DateTime(2023, 10, 1, 6, 0, 0);
-                
-                TimeSlots = TimeSlotsForDate(course.Id, start_time);
                 Overlapping = OverlappingTimeSlots(1, start, end);
             }
             return Page();

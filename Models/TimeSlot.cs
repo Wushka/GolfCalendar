@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography.X509Certificates;
 
 namespace WebApplication1.Models
@@ -13,13 +14,18 @@ namespace WebApplication1.Models
         [Required]
         public int UserId { get; set; }
 
+
+/*
+convert to user TimeOnly and Date to get validation "for free" rather than code it
+*/
+
         [Required]
         public DateTime StartTime { get; set; }
 
         [Required]
-        public DateTime EndTime{ get; set; }
+        public DateTime EndTime { get; set; }
 
-        public virtual User? user { get; }
-        public virtual Course? course { get;}
+        public User? User { get; private set; }
+        public Course? Course { get; private set; }
     }
 }

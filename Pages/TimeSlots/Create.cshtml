@@ -13,26 +13,24 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="TimeSlot.CourseId" class="control-label"></label>
-                <input asp-for="TimeSlot.CourseId" class="form-control" />
-                <span asp-validation-for="TimeSlot.CourseId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TimeSlot.UserId" class="control-label"></label>
-                <input asp-for="TimeSlot.UserId" class="form-control" />
-                <span asp-validation-for="TimeSlot.UserId" class="text-danger"></span>
-            </div>
+
+
+            @Html.Label("Course")
+            <select asp-for="TimeSlot.CourseId" asp-items="@(Model.CoursesListItems)">
+                <option>Please select one</option>
+            </select>
+
+            @Html.Label("User")
+            <select asp-for="TimeSlot.UserId" asp-items="@(Model.UsersListItems)">
+                <option>Please select one</option>
+            </select>
+
             <div class="form-group">
                 <label asp-for="TimeSlot.StartTime" class="control-label"></label>
                 <input asp-for="TimeSlot.StartTime" class="form-control" />
                 <span asp-validation-for="TimeSlot.StartTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TimeSlot.EndTime" class="control-label"></label>
-                <input asp-for="TimeSlot.EndTime" class="form-control" />
-                <span asp-validation-for="TimeSlot.EndTime" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -45,5 +43,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

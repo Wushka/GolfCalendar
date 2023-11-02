@@ -15,8 +15,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.start_time, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-sm-4">
-                @Html.TextBoxFor(model => model.start_time, new { @type="date", @class = "form-control datepicker",  @Value = Model.start_time.ToString("dd-MM-yyyy") } )
-                @Html.ValidationMessageFor(model => model.start_time, "", new { @class = "text-danger" })
+                @Html.TextBox("start_time", Model.start_time.ToString("yyyy-MM-dd"), new {@type="date", @class = "form-control datepicker"})
             </div>
             @Html.Hidden("id", Model.Course.Id)
         </div>

@@ -30,6 +30,8 @@ namespace WebApplication1.Pages.TimeSlots
 
             var timeslot = await _context.TimeSlot
                 .Where(ts => ts.Id == id)
+                .Include(ts => ts.User)
+                .Include(ts => ts.Course)
                 .FirstOrDefaultAsync();
             if (timeslot == null)
             {
