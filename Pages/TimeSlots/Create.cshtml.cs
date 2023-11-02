@@ -79,9 +79,18 @@ namespace WebApplication1.Pages.TimeSlots
                     TimeSlot.EndTime = pot_end_time;
                 }
             }
+            else
+            {
+                ModelState.AddModelError("StartTime", "StartTime is to late in the day");
+            }
 
             if (!ModelState.IsValid || _context.TimeSlot == null || TimeSlot == null)
             {
+                var message = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+                
+                ViewData["ErrorMessage"] = message;
                 return Page();
             }
 
